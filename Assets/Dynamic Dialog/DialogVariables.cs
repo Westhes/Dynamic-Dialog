@@ -1,33 +1,9 @@
 using System;
 
-[Serializable]
-public struct DialogQuery
-{
-    public DialogContext context;
-    public DialogWorldVariables worldVariables;
-    public DialogVariables variables;
-}
-
-[Serializable]
-public struct DialogQueryResult
-{
-    public DialogContext context;
-    public DialogWorldVariablesKeyValue worldVariables;
-    public DialogVariables variables;
-}
-
-[Serializable]
-public struct DialogWorldVariablesKeyValue
-{
-    public DialogWorldVariables worldVariables;
-    public Func<object> obj;
-    //public Func<out> obj;
-}
 // Describes the situation
-//[Flags]
 public enum DialogContext
 {
-    Everything = int.MaxValue,
+    None = 0,
     InteractedConversation = 1 << 0,
     Comment = 1 << 1,
     Random = 1 << 2,

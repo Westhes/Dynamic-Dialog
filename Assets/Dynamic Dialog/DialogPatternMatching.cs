@@ -10,40 +10,39 @@ using UnityEngine;
 
 public class DialogPatternMatching : MonoBehaviour
 {
-    public DialogQuery query;
-    public DialogQueryResult Result;
-    // This should have been created somewhere else i guess
-    public Dictionary<DialogContext, string> DialogContextDictionary = new Dictionary<DialogContext, string>();
+    public Dictionary<DialogContext, Rules[]> DialogContextDictionary = new Dictionary<DialogContext, Rules[]>();
 
-    TextMeshPro TextMesh;
     public void Start()
     {
         foreach (DialogContext c in (DialogContext[])Enum.GetValues(typeof(DialogContext)))
-            DialogContextDictionary[c] = c.ToString();
-
-        TextMesh = GetComponent<TextMeshPro>();
+            DialogContextDictionary[c] = new Rules[0]; // TODO: this should be 0.. make it a list maybe?
     }
 
-    public void FixedUpdate()
+    public Rules PatternMatch(DialogContext context, Query query)
     {
-        TextMesh.text = PatternMatch(query.context, query.worldVariables, query.variables);
-    }
+        Rules[] contextRules = GetContextRules(context);
+        List<Rules> validRules = new List<Rules>();
 
-    public string PatternMatch(DialogContext context, DialogWorldVariables worldVariables, DialogVariables variables)
-    {
-        string result = string.Empty;
-
-        result = ObtainContext(context);
-
-
-        return result;
-    }
-
-    public string ObtainContext(DialogContext context)
-    {
-        if (!DialogContextDictionary.TryGetValue(context, out string value))
+        // Find all valid rules
+        foreach(Rules rules in contextRules)
         {
-            Debug.Log($"Unable to find {context.ToString()} in DialogContextDictionary.");
+            if (query.RhsValidate(rules))
+            {
+                validRules.Add(rules);
+            }
+        }
+        
+        // Return a random rule that matches
+        return (validRules.Count > 0) ? 
+            validRules[UnityEngine.Random.Range(0, validRules.Count -1)] : 
+            null;
+    }
+
+    public Rules[] GetContextRules(DialogContext context)
+    {
+        if (!DialogContextDictionary.TryGetValue(context, out Rules[] value))
+        {
+            Debug.Log($"Unable to find {context} in DialogContextDictionary.");
         }
         return value;
 //#if SafeSearch

@@ -196,6 +196,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e7ab4e9f3981a944bf08925b450dbdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rules:
+    response:
+      text: 
+  Criterion:
+    value: 10
+    conditionOperator: 3
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,15 +636,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 164ca872e73b8d24fabfb7c574702b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  query:
-    context: 0
-    worldVariables: 0
-    variables: 0
-  Result:
-    context: 0
-    worldVariables:
-      worldVariables: 0
-    variables: 0
 --- !u!114 &622746167
 MonoBehaviour:
   m_ObjectHideFlags: 0

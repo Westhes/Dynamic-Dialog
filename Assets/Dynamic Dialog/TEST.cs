@@ -7,10 +7,11 @@ using UnityEngine;
 
 public class TEST : MonoBehaviour
 {
-    Query<Enum, object> Query = new Query<Enum, object>();
-    Query<Enum, object> Rules = new Query<Enum, object>();
+    Query Query = new Query();
+    public Rules rules = new Rules();
 
-    public IntLessOrEquals lessThanEquals;
+    //public IntLessOrEquals lessThanEquals;
+    public CriterionValue Criterion;
 
     public void Start()
     {
@@ -19,16 +20,10 @@ public class TEST : MonoBehaviour
         Query.Add(DialogWorldVariables.ScoreCount, 5);
         Query.Add(DialogWorldVariables.DeathCount, 1);
 
-        //foreach (var kvp in Query)
-        //{
-        //    Debug.Log($"K: {kvp.Key} V: {kvp.Value}");
-        //}
-        Rules.Add(DialogWorldVariables.IsAlive, true);
-        Rules.Add(DialogWorldVariables.ScoreCount, lessThanEquals);
+        rules.Add(DialogWorldVariables.IsAlive, true);
+        rules.Add(DialogWorldVariables.ScoreCount, Criterion);
 
-        bool rulesAreMet = DictionaryExtensions.Validate(Query, Rules);
-        Debug.Log($"Rules are met: {rulesAreMet}");
+        bool rulesAreMet = DictionaryExtensions.RhsValidate(Query, rules);
+        Debug.Log($"Rules are met: {rulesAreMet} {(rulesAreMet ? rules.Response.Text : "..")}");
     }
-
-
 }
