@@ -5,6 +5,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
+[Serializable]
 public class PropertyWatcher : MonoBehaviour
 {
     [SerializeField]

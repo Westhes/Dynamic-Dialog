@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8055652}
-  - component: {fileID: 8055651}
+  - component: {fileID: 8055653}
   m_Layer: 0
   m_Name: CustomEditor
   m_TagString: Untagged
@@ -140,20 +140,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &8055651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9de33ceecf4c7cd47b4808fc38baf84c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _watchedObject: {fileID: 592333470}
-  _propertyName: position
 --- !u!4 &8055652
 Transform:
   m_ObjectHideFlags: 0
@@ -169,6 +155,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8055653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8055650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 420df6c0c9916a84092b250072071302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Watcher:
+    _watchedObject: {fileID: 1586903369}
+    _propertyName: get_childCount
+    _returnType: 1
+  watchers:
+  - _watchedObject: {fileID: 1586903369}
+    _propertyName: get_hasChanged
+    _returnType: 0
+  - _watchedObject: {fileID: 592333470}
+    _propertyName: get_childCount
+    _returnType: 1
+  - _watchedObject: {fileID: 622746168}
+    _propertyName: get_stitchLightmapSeams
+    _returnType: 0
+  - _watchedObject: {fileID: 619394801}
+    _propertyName: get_shadowIntensity
+    _returnType: 2
 --- !u!1 &9551518
 GameObject:
   m_ObjectHideFlags: 0
