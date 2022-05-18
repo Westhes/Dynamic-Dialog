@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace GameName.Utility.Watcher
 {
-    public enum DataTypes
+    public enum DataType
     {
         Boolean,
         Integer,
@@ -25,11 +25,11 @@ namespace GameName.Utility.Watcher
         private string _propertyName = string.Empty;
 
         [SerializeField]
-        private DataTypes _returnType;
+        private DataType _returnType;
 
-        Func<bool> funcBool;
-        Func<int> funcInt;
-        Func<float> funcFloat;
+        public Func<bool> FuncBool { get; private set; }
+        public Func<int> FuncInt { get; private set; }
+        public Func<float> FuncFloat { get; private set; }
 
         public UnityEngine.Object WatchedObject
         {
@@ -41,6 +41,9 @@ namespace GameName.Utility.Watcher
                     _watchedObject = value;
                     _propertyName = null;
                     //function = null;
+                    FuncBool = null;
+                    FuncFloat = null;
+                    FuncInt = null;
                 }
             }
         }
@@ -52,47 +55,40 @@ namespace GameName.Utility.Watcher
                 if (_propertyName != value)
                 {
                     _propertyName = value;
+                    FuncBool = null;
+                    FuncInt = null;
+                    FuncFloat = null;
                     Initialize();
                 }
             }
         }
 
+        /// <summary> Needs to be called if set by the inspector. </summary>
         public void Initialize()
         {
-            Debug.Log("Return type was set to: " + _returnType);
-            switch(_returnType)
+            switch (_returnType)
             {
-                case DataTypes.Boolean:
-                    funcBool = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), WatchedObject, PropertyName);
+                case DataType.Boolean:
+                    FuncBool = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), WatchedObject, PropertyName);
                     break;
-                case DataTypes.Integer:
-                    funcInt = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), WatchedObject, PropertyName);
+                case DataType.Integer:
+                    FuncInt = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), WatchedObject, PropertyName);
                     break;
-                case DataTypes.Float:
-                    funcFloat = (Func<float>)Delegate.CreateDelegate(typeof(Func<float>), WatchedObject, PropertyName);
+                case DataType.Float:
+                    FuncFloat = (Func<float>)Delegate.CreateDelegate(typeof(Func<float>), WatchedObject, PropertyName);
                     break;
             }
         }
 
-        public object GetValue()
+        /// <summary> Returns the value of the property being watched. </summary>
+        /// <remarks> Any type of value is cast to a float. Please use the functions directly instead to avoid casting! </remarks>
+        /// <note> When returning an object here instead of a float/integer or a boolean, it will cause 16.6bytes of garbage. Hence why it's of type float. </note>
+        public float GetValue() => _returnType switch
         {
-            switch(_returnType)
-            {
-                case DataTypes.Boolean: return funcBool();
-                case DataTypes.Integer: return funcInt();
-                case DataTypes.Float: return funcFloat();
-                default: return null;
-            }
-            //_property?.GetValue(WatchedObject);
-        }
-
-        private static PropertyInfo AcquireProperty(object obj, string propertyName)
-        {
-            if (obj == null || string.IsNullOrEmpty(propertyName))
-                return null;
-
-            return obj.GetType().GetProperty(propertyName);
-        }
-
+            DataType.Boolean => FuncBool.Invoke().GetHashCode(),
+            DataType.Integer => FuncInt.Invoke(),
+            DataType.Float => FuncFloat.Invoke(),
+            _ => throw new IndexOutOfRangeException(),
+        };
     }
 }

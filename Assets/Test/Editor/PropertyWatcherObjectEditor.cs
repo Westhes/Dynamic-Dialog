@@ -151,9 +151,9 @@ namespace GameName.Utility.Watcher
             propertyName.stringValue = method.Name;
 
             int enumValueIndex = -1;
-            if (method.ReturnType == typeof(bool)) enumValueIndex = (int)DataTypes.Boolean;
-            else if (method.ReturnType == typeof(int)) enumValueIndex = (int)DataTypes.Integer;
-            else if (method.ReturnType == typeof(float)) enumValueIndex = (int)DataTypes.Float;
+            if (method.ReturnType == typeof(bool)) enumValueIndex = (int)DataType.Boolean;
+            else if (method.ReturnType == typeof(int)) enumValueIndex = (int)DataType.Integer;
+            else if (method.ReturnType == typeof(float)) enumValueIndex = (int)DataType.Float;
             returnType.enumValueIndex = enumValueIndex;
         }
     }
