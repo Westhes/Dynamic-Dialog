@@ -10,11 +10,13 @@ namespace GameName.DynamicDialog.DataTypes
 	///     return false;
 	/// </remarks>
 	[Serializable]
-	public readonly struct IntLessOrEquals
+	public readonly struct IntLessOrEquals : IDataType
 	{
 		public readonly int value;
 
 		public IntLessOrEquals(int n) => value = n;
+
+		public bool Compare(float f) => (f <= value);
 
 		public override bool Equals(object o) => (o is int i && i <= value) || (o is float f && f <= value);
 

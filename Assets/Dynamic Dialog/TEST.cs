@@ -10,20 +10,31 @@ public class TEST : MonoBehaviour
     Query Query = new Query();
     public Rules rules = new Rules();
 
-    //public IntLessOrEquals lessThanEquals;
-    public CriterionValue Criterion;
+    public bool isAliveCriterion;
+    public CriterionValue scoreCriterion;
 
     public void Start()
     {
+        // Create query / blackboard
+        // This can change every frame/check and can contain many elements that might not even be read
         Query.Add(DialogWorldVariables.Everything, "Test");
-        Query.Add(DialogWorldVariables.IsAlive, true);
-        Query.Add(DialogWorldVariables.ScoreCount, 5);
+        Query.Add(DialogWorldVariables.IsAlive, true);  // This will be checked.
+        Query.Add(DialogWorldVariables.ScoreCount, 20); // This will be checked.
         Query.Add(DialogWorldVariables.DeathCount, 1);
 
-        rules.Add(DialogWorldVariables.IsAlive, true);
-        rules.Add(DialogWorldVariables.ScoreCount, Criterion);
+        // Create a criteria object which can be set from outside codes.
+        isAliveCriterion = true;
+        scoreCriterion = new CriterionValue(10f, ConditionOperator.GreaterOrEquals);
 
-        bool rulesAreMet = DictionaryExtensions.RhsValidate(Query, rules);
-        Debug.Log($"Rules are met: {rulesAreMet} {(rulesAreMet ? rules.Response.Text : "..")}");
+        // Create rules that must be met
+        // Rules will be set once, probably at launch.
+        rules.Add(DialogWorldVariables.IsAlive, isAliveCriterion);
+        rules.Add(DialogWorldVariables.ScoreCount, scoreCriterion);
+        rules.Response = new Response("Hello world");
+
+        // Validate
+        bool areRulesMet = DictionaryExtensions.RhsValidate(Query, rules);
+        Debug.Log($"Rules are met: {areRulesMet} {(areRulesMet ? rules.Response.Text : "..")}"); 
+        // Outputs: Rules are met: True Hello world
     }
 }

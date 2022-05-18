@@ -6,17 +6,8 @@ using UnityEngine;
 namespace GameName.DynamicDialog.DataTypes
 {
     [Serializable]
-    public struct CriterionValue
+    public struct CriterionValue : IDataType
     {
-        public enum ConditionOperator
-        {
-            Equals,
-            Greater,
-            GreaterOrEquals,
-            Less,
-            LessOrEquals
-        }
-
         [SerializeField] private float value;
         [SerializeField] private ConditionOperator conditionOperator;
 
@@ -25,21 +16,15 @@ namespace GameName.DynamicDialog.DataTypes
 
         public CriterionValue(float v, ConditionOperator o) => (value, conditionOperator) = (v, o);
 
-        public override bool Equals(object obj) => (obj is int i && Compare(i)) || (obj is float f && Compare(f));
-
-        public override int GetHashCode() => value.GetHashCode();
-
-        private bool Compare(int i) => conditionOperator switch
+        public override bool Equals(object obj) => obj switch
         {
-            ConditionOperator.Equals => i == value,
-            ConditionOperator.Greater => i > value,
-            ConditionOperator.GreaterOrEquals => i >= value,
-            ConditionOperator.Less => i < value,
-            ConditionOperator.LessOrEquals => i <= value,
+            int i => Compare(i),
+            float f => Compare(f),
             _ => false,
         };
+        public override int GetHashCode() => value.GetHashCode();
 
-        private bool Compare(float i) => conditionOperator switch
+        public bool Compare(float i) => conditionOperator switch
         {
             ConditionOperator.Equals => i == value,
             ConditionOperator.Greater => i > value,

@@ -8,7 +8,7 @@ public class Rules : Dictionary<System.Enum, object>
 {
     [SerializeField]
     private Response response;
-    public Response Response => response;
+    public Response Response { get => response; set => response = value; }
 
     /// <summary>
     /// The amount of rules required to pass the comparison
