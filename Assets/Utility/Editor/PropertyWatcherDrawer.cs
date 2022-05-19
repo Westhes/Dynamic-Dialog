@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
@@ -11,8 +10,8 @@ using UnityEngine.UIElements;
 
 namespace GameName.Utility.Watcher
 {
-    [CustomPropertyDrawer(typeof(PropertyWatcherObject))]
-    public class PropertyWatcherObjectEditor : PropertyDrawer
+    [CustomPropertyDrawer(typeof(PropertyWatcher))]
+    public class PropertyWatcherDrawer : PropertyDrawer
     {
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
@@ -21,7 +20,7 @@ namespace GameName.Utility.Watcher
 
             // Create property fields.
             var watchedObjectField = new PropertyField(property.FindPropertyRelative("WatchedObject"));
-            var propertyNameField = new PropertyField(property.FindPropertyRelative("PropertyName"), "Fancy Name");
+            var propertyNameField = new PropertyField(property.FindPropertyRelative("PropertyName"));
 
             // Add fields to the container.
             container.Add(watchedObjectField);
@@ -52,10 +51,9 @@ namespace GameName.Utility.Watcher
                 }
             }
         }
-
         string[] PropertyStrings { get; set; }
         (Component, MethodInfo)[] PropertyCollection { get; set; }
-        Object scannedObject = null;
+
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
@@ -78,7 +76,7 @@ namespace GameName.Utility.Watcher
             var nameRect = new Rect(amountRect.xMax + tabSpacing, position.y, position.width * 0.6f - tabSpacing, position.height);
 
             EditorGUI.PropertyField(amountRect, watchedObject, GUIContent.none);
-            FetchData(property);
+            FetchData();
             SelectedIndex = EditorGUI.Popup(nameRect, SelectedIndex, PropertyStrings ?? (new string[0]));
 
             // Set indent back to what it was
@@ -86,7 +84,7 @@ namespace GameName.Utility.Watcher
             EditorGUI.EndProperty();
         }
 
-        void FetchData(SerializedProperty property)
+        void FetchData()
         {
             // Obtain values
             var obj = watchedObject.objectReferenceValue;
@@ -103,8 +101,6 @@ namespace GameName.Utility.Watcher
                 propertyName.stringValue = null;
                 return;
             }
-            //if (obj == scannedObject) return;
-            scannedObject = obj;
 
             // Create 2 lists for storing properties and references.
             List<string> propertyOptions = new List<string>();

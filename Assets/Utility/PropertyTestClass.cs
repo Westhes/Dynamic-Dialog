@@ -1,13 +1,11 @@
 using GameName.Utility.Watcher;
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PropertyTestClass : MonoBehaviour
 {
-    public PropertyWatcherObject Watcher;
-    public PropertyWatcherObject[] watchers;
+    public PropertyWatcher Watcher;
+    public PropertyWatcher[] watchers;
 
     void Start()
     {

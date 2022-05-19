@@ -1,9 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Runtime.Serialization;
-
 using UnityEngine;
 
 namespace GameName.Utility.Watcher
@@ -16,7 +11,7 @@ namespace GameName.Utility.Watcher
     }
 
     [Serializable]
-    public class PropertyWatcherObject
+    public class PropertyWatcher
     {
         [SerializeField]
         private UnityEngine.Object _watchedObject;

@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8055652}
   - component: {fileID: 8055653}
-  - component: {fileID: 8055654}
   m_Layer: 0
   m_Name: CustomEditor
   m_TagString: Untagged
@@ -185,20 +184,6 @@ MonoBehaviour:
   - _watchedObject: {fileID: 619394801}
     _propertyName: get_shadowIntensity
     _returnType: 2
---- !u!114 &8055654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8055650}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9de33ceecf4c7cd47b4808fc38baf84c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _watchedObject: {fileID: 1586903370}
-  _propertyName: size
 --- !u!1 &9551518
 GameObject:
   m_ObjectHideFlags: 0
