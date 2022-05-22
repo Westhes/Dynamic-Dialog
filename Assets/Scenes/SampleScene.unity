@@ -163,28 +163,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8055650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 420df6c0c9916a84092b250072071302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Watcher:
-    _watchedObject: {fileID: 592333470}
-    _propertyName: get_childCount
-    _returnType: 1
+    watchedObject: {fileID: 1586903369}
+    propertyName: get_childCount
+    returnType: 1
   watchers:
-  - _watchedObject: {fileID: 1586903369}
-    _propertyName: get_hasChanged
-    _returnType: 0
-  - _watchedObject: {fileID: 592333470}
-    _propertyName: get_childCount
-    _returnType: 1
-  - _watchedObject: {fileID: 622746168}
-    _propertyName: get_stitchLightmapSeams
-    _returnType: 0
-  - _watchedObject: {fileID: 619394801}
-    _propertyName: get_shadowIntensity
-    _returnType: 2
+  - watchedObject: {fileID: 592333468}
+    propertyName: get_rotation
+    returnType: 2
 --- !u!114 &8055654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,7 +183,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8055650}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cffa1227593fe344e99af6f83e0d865a, type: 3}
   m_Name: 
@@ -200,10 +191,10 @@ MonoBehaviour:
   testPropertyName: HEllo
   keyValueType:
     name: HEllo
-    type: 1
+    blackboardType: 0
   keyValueTypes:
   - name: test
-    type: 0
+    blackboardType: 0
 --- !u!1 &9551518
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +338,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 190444067}
-  - component: {fileID: 190444066}
   - component: {fileID: 190444068}
   m_Layer: 0
   m_Name: FunctionSelector
@@ -356,34 +346,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &190444066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 190444065}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc9a5d2e07d6ed74580a5d5217b070bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _selectedFunction: 2
-  test:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 622746169}
-        m_TargetAssemblyTypeName: UnityEngine.Transform, UnityEngine
-        m_MethodName: set_hasChanged
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 0
 --- !u!4 &190444067
 Transform:
   m_ObjectHideFlags: 0
@@ -968,7 +930,6 @@ GameObject:
   - component: {fileID: 622746168}
   - component: {fileID: 622746167}
   - component: {fileID: 622746166}
-  - component: {fileID: 622746170}
   m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1142,21 +1103,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0051, y: 2.37}
   m_SizeDelta: {x: 18.2746, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &622746170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 622746165}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 708e3cf521e53da48b67865cc982d927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMesh: {fileID: 622746167}
-  stringOne: HEllo
-  stringTwo: HEllo
 --- !u!1 &1043591337
 GameObject:
   m_ObjectHideFlags: 0
@@ -1168,8 +1114,6 @@ GameObject:
   - component: {fileID: 1043591342}
   - component: {fileID: 1043591341}
   - component: {fileID: 1043591340}
-  - component: {fileID: 1043591339}
-  - component: {fileID: 1043591338}
   m_Layer: 0
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -1177,33 +1121,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1043591338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043591337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b58b9e0c3a4f0f47bd333fe473d2468, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textMesh: {fileID: 1043591340}
-  propNameOne: HEllo
-  propNameTwo: HEllo
---- !u!114 &1043591339
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1043591337}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 164ca872e73b8d24fabfb7c574702b39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1043591340
 MonoBehaviour:
   m_ObjectHideFlags: 0

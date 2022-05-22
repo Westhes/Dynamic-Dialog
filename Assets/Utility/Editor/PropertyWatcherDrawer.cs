@@ -19,8 +19,8 @@ namespace GameName.Utility.Watcher
             var container = new VisualElement();
 
             // Create property fields.
-            var watchedObjectField = new PropertyField(property.FindPropertyRelative("WatchedObject"));
-            var propertyNameField = new PropertyField(property.FindPropertyRelative("PropertyName"));
+            var watchedObjectField = new PropertyField(property.FindPropertyRelative("watchedObject"));
+            var propertyNameField = new PropertyField(property.FindPropertyRelative("propertyName"));
 
             // Add fields to the container.
             container.Add(watchedObjectField);
@@ -58,9 +58,9 @@ namespace GameName.Utility.Watcher
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             this.property = property;
-            watchedObject = property.FindPropertyRelative("_watchedObject");
-            propertyName = property.FindPropertyRelative("_propertyName");
-            returnType = property.FindPropertyRelative("_returnType");
+            watchedObject = property.FindPropertyRelative("watchedObject");
+            propertyName = property.FindPropertyRelative("propertyName");
+            returnType = property.FindPropertyRelative("returnType");
 
             // UI stuff
             EditorGUI.BeginProperty(position, label, property);
