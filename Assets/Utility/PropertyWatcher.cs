@@ -71,6 +71,7 @@ namespace GameName.Utility.Watcher
         }
 
         /// <summary> Returns the value of the property being watched. </summary>
+        /// <see href="https://stackoverflow.com/a/21897095/6590240"> It's important to note that int to float conversion is implicit. Unlike float to int which needs to be explicitly cast. </see>
         /// <remarks> Any type of value is cast to a float. Please use the functions directly instead to avoid casting! </remarks>
         /// <note> When returning an object here instead of a float/integer or a boolean, it will cause 16.6bytes of garbage. Hence why it's of type float. </note>
         public float GetValue() => _returnType switch
