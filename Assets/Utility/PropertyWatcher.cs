@@ -1,17 +1,13 @@
 using System;
+
+using UnityEditor;
+
 using UnityEngine;
 
 namespace GameName.Utility.Watcher
 {
-    public enum DataType
-    {
-        Boolean,
-        Integer,
-        Float
-    }
-
     [Serializable]
-    public class PropertyWatcher
+    public class PropertyWatcher : ISerializationCallbackReceiver
     {
         [SerializeField]
         private UnityEngine.Object _watchedObject;
@@ -20,7 +16,7 @@ namespace GameName.Utility.Watcher
         private string _propertyName = string.Empty;
 
         [SerializeField]
-        private DataType _returnType;
+        private BlackboardDataTypes _returnType;
 
         public Func<bool> FuncBool { get; private set; }
         public Func<int> FuncInt { get; private set; }
@@ -35,7 +31,6 @@ namespace GameName.Utility.Watcher
                 {
                     _watchedObject = value;
                     _propertyName = null;
-                    //function = null;
                     FuncBool = null;
                     FuncFloat = null;
                     FuncInt = null;
@@ -53,23 +48,23 @@ namespace GameName.Utility.Watcher
                     FuncBool = null;
                     FuncInt = null;
                     FuncFloat = null;
-                    Initialize();
+                    SetupFunctions();
                 }
             }
         }
 
         /// <summary> Needs to be called if set by the inspector. </summary>
-        public void Initialize()
+        private void SetupFunctions()
         {
             switch (_returnType)
             {
-                case DataType.Boolean:
+                case BlackboardDataTypes.Boolean:
                     FuncBool = (Func<bool>)Delegate.CreateDelegate(typeof(Func<bool>), WatchedObject, PropertyName);
                     break;
-                case DataType.Integer:
+                case BlackboardDataTypes.Integer:
                     FuncInt = (Func<int>)Delegate.CreateDelegate(typeof(Func<int>), WatchedObject, PropertyName);
                     break;
-                case DataType.Float:
+                case BlackboardDataTypes.Float:
                     FuncFloat = (Func<float>)Delegate.CreateDelegate(typeof(Func<float>), WatchedObject, PropertyName);
                     break;
             }
@@ -80,10 +75,14 @@ namespace GameName.Utility.Watcher
         /// <note> When returning an object here instead of a float/integer or a boolean, it will cause 16.6bytes of garbage. Hence why it's of type float. </note>
         public float GetValue() => _returnType switch
         {
-            DataType.Boolean => FuncBool.Invoke().GetHashCode(),
-            DataType.Integer => FuncInt.Invoke(),
-            DataType.Float => FuncFloat.Invoke(),
+            BlackboardDataTypes.Boolean => FuncBool.Invoke().GetHashCode(),
+            BlackboardDataTypes.Integer => FuncInt.Invoke(),
+            BlackboardDataTypes.Float => FuncFloat.Invoke(),
             _ => throw new IndexOutOfRangeException(),
         };
+
+        void ISerializationCallbackReceiver.OnBeforeSerialize() { }
+
+        void ISerializationCallbackReceiver.OnAfterDeserialize() => SetupFunctions();
     }
 }
