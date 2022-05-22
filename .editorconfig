@@ -1,4 +1,8 @@
-﻿[*.cs]
+# NOTE: Requires **VS2019 16.3** or later
 
-# SA1600: Elements should be documented
-dotnet_diagnostic.SA1600.severity = silent
+# Rules for BovineLabs
+# Description: Code analysis rules for BovineLabs projects
+
+# Code files
+[*.{cs,vb}]
+
