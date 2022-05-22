@@ -1,0 +1,26 @@
+﻿<#@ template language="C#" hostspecific="false" linePragmas="false" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="UnityEngine" #>
+
+namespace <#= NameSpace #>
+{
+	public class <#= ClassName #>
+	{
+<#
+PushIndent("\t\t");
+foreach(string keyName in KeyNames)
+{
+	WriteLine($"public const int {keyName} = {new PropertyName(keyName).GetHashCode()};");
+}
+ClearIndent();
+#>
+	}
+}
+
+
+
+<#+
+	public string NameSpace {get;set;}
+	public string ClassName {get;set;}
+	public string[] KeyNames {get;set;}
+#>
