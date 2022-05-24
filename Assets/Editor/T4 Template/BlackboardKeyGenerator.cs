@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Assets.Utility.Editor.Template
+namespace Assets.Editor.T4_Template
 {
     using UnityEngine;
     using System;
@@ -32,7 +32,7 @@ namespace Assets.Utility.Editor.Template
 PushIndent("\t\t");
 foreach(string keyName in KeyNames)
 {
-	WriteLine($"public const int {keyName} = {new PropertyName(keyName).GetHashCode()};");
+	WriteLine($"public const int {keyName.Replace(" ", "_")} = {new PropertyName(keyName).GetHashCode()};");
 }
 ClearIndent();
 

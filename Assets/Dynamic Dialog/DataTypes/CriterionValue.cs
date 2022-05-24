@@ -1,30 +1,35 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 namespace GameName.DynamicDialog.DataTypes
 {
-    [Serializable]
-    public struct CriterionValue : IDataType
-    {
-        [SerializeField] private float value;
-        [SerializeField] private ConditionOperator conditionOperator;
+    using System;
+    using UnityEngine;
 
-        public float Value => value;
-        public ConditionOperator Operator => conditionOperator;
+    /// <summary>
+    /// A criterion for single operator comparisons.
+    /// </summary>
+    [Serializable]
+    public struct CriterionValue : ICriteria
+    {
+        [SerializeField]
+        private float value;
+        [SerializeField]
+        private ConditionOperator conditionOperator;
 
         public CriterionValue(float v, ConditionOperator o) => (value, conditionOperator) = (v, o);
 
+        public float Value => value;
+
+        public ConditionOperator Operator => conditionOperator;
+
         public override bool Equals(object obj) => obj switch
         {
-            int i => Compare(i),
-            float f => Compare(f),
+            int i => Equals(i),
+            float f => Equals(f),
             _ => false,
         };
+
         public override int GetHashCode() => value.GetHashCode();
 
-        public bool Compare(float i) => conditionOperator switch
+        public bool Equals(float i) => conditionOperator switch
         {
             ConditionOperator.Equals => i == value,
             ConditionOperator.Greater => i > value,

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace GameName.DynamicDialog.DataTypes
 {
-    public interface IDataType
+    public interface ICriteria
     {
-        public bool Compare(float f);
+        public bool Equals(float f);
     }
 }

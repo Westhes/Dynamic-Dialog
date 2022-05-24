@@ -6,3 +6,8 @@
 # Code files
 [*.{cs,vb}]
 
+
+[*.cs]
+dotnet_diagnostic.SA1503.severity=suggestion
+dotnet_diagnostic.SA1101.severity=silent
+dotnet_diagnostic.SA1600.severity=suggestion

@@ -1,3 +1,6 @@
+using Assets.Editor.T4_Template;
+
+using System;
 using System.IO;
 using System.Reflection;
 
@@ -14,7 +17,7 @@ namespace GameName.Utility
         [MenuItem("Blackboard/GenerateKeysExample")]
         public static void Execute()
         {
-            Assets.Utility.Editor.Template.BlackboardKeyGenerator gen = new()
+            BlackboardKeyGenerator gen = new()
             {
                 NameSpace = "GameName.Utility",
                 ClassName = className,

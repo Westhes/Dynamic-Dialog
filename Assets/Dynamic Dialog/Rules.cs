@@ -1,18 +1,19 @@
+using GameName.DynamicDialog.DataTypes;
+
 using System;
 using System.Collections.Generic;
 
 using UnityEngine;
 
 [Serializable]
-public class Rules : Dictionary<System.Enum, object>
+public class Rules : Dictionary<int, ICriteria>
 {
     [SerializeField]
     private Response response;
+
     public Response Response { get => response; set => response = value; }
 
-    /// <summary>
-    /// The amount of rules required to pass the comparison
-    /// </summary>
+    /// <summary> Gets the score based off the amount of rules required to pass the comparison. </summary>
     public int Score => Count;
 }
 
