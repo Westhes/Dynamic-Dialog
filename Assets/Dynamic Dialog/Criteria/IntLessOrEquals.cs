@@ -1,6 +1,6 @@
 using System;
 
-namespace GameName.DynamicDialog.DataTypes
+namespace GameName.DynamicDialog.Criteria
 {
 	/// <summary> Wrapper for int. Overwritten Equals method for comparing other integers whether they are lower or equal. </summary>
 	/// <remarks>
@@ -10,15 +10,15 @@ namespace GameName.DynamicDialog.DataTypes
 	///     return false;
 	/// </remarks>
 	[Serializable]
-	public readonly struct FloatLessOrEquals : ICriteria
+	public readonly struct IntLessOrEquals : ICriteria
 	{
-		public readonly float value;
+		public readonly int value;
 
-		public FloatLessOrEquals(float n) => value = n;
+		public IntLessOrEquals(int n) => value = n;
 
 		public bool Equals(float f) => (f <= value);
 
-        public override bool Equals(object o) => (o is float f && f <= value) || (o is int i && i <= value);
+		public override bool Equals(object o) => (o is int i && i <= value) || (o is float f && f <= value);
 
 		public override int GetHashCode() => value.GetHashCode();
 	}

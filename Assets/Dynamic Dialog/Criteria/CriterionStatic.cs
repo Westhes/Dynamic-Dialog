@@ -1,4 +1,4 @@
-namespace GameName.DynamicDialog.DataTypes
+namespace GameName.DynamicDialog.Criteria
 {
     using System;
     using UnityEngine;

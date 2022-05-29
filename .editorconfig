@@ -11,3 +11,4 @@
 dotnet_diagnostic.SA1503.severity=suggestion
 dotnet_diagnostic.SA1101.severity=silent
 dotnet_diagnostic.SA1600.severity=suggestion
+dotnet_diagnostic.SA1502.severity=silent

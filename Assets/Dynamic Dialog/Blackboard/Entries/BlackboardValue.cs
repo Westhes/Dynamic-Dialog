@@ -1,4 +1,4 @@
-namespace GameName.DynamicDialog
+namespace GameName.DynamicDialog.Blackboard.Entry
 {
     using System;
     using System.Runtime.InteropServices;
@@ -6,10 +6,11 @@ namespace GameName.DynamicDialog
     /// <summary> Mutable to avoid unnecessary allocation. </summary>
     [Serializable]
     [StructLayout(LayoutKind.Sequential)]
-    public struct BlackboardValue
+    public struct BlackboardValue : IBlackboardEntry
     {
-        public int Id;
-        public float Value;
+        public int Id { get; set; }
+
+        public float Value { get; set; }
 
         public BlackboardValue(int id, float value)
         {

@@ -1,20 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using UnityEngine;
-
 namespace GameName.Utility
 {
-    public enum BlackboardDataTypes
-    {
-        Boolean,
-        Integer,
-        Float
-    }
+    using System;
 
+    /// <summary> Extension methods that help with obtaining the right types. </summary>
     public static class BlackboardDataTypeExtensions
     {
         public static Type GetObjectType(this BlackboardDataTypes t) => t switch
@@ -39,17 +27,7 @@ namespace GameName.Utility
             if (t == typeof(float))
                 return BlackboardDataTypes.Float;
 
-            //Debug.LogError($"Value of type: " + t + " has not been implemented (yet).");
             return (BlackboardDataTypes)(-1);
-            //var tCode = Type.GetTypeCode(t);
-            //return tCode switch
-            //{
-            //    TypeCode.Empty => (BlackboardDataTypes)(-1), // Null
-            //    TypeCode.Boolean => BlackboardDataTypes.Boolean,
-            //    TypeCode.Int32 => BlackboardDataTypes.Integer,
-            //    TypeCode.Single => BlackboardDataTypes.Float,
-            //    _ => throw new NotImplementedException($"Value of type {t} has not been implemented (yet)."),
-            //};
         }
     }
 }

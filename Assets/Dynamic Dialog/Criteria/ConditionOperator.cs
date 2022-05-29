@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameName.DynamicDialog.DataTypes
+namespace GameName.DynamicDialog.Criteria
 {
     public enum ConditionOperator
     {

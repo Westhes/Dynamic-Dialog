@@ -1,4 +1,4 @@
-namespace GameName.DynamicDialog
+namespace GameName.DynamicDialog.Blackboard.Entry
 {
     using System;
     using GameName.Utility.Watcher;

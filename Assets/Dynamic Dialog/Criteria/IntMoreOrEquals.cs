@@ -1,6 +1,6 @@
 using System;
 
-namespace GameName.DynamicDialog.DataTypes
+namespace GameName.DynamicDialog.Criteria
 {
     [Serializable]
     public readonly struct IntMoreOrEquals : ICriteria
