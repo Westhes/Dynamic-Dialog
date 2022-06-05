@@ -9,6 +9,10 @@
         [SerializeField]
         private new PropertyName name;
 
+#if UNITY_EDITOR
+        public string Name => base.name;
+#endif
+
         [field: SerializeField]
         public Scope Scope { get; set; }
 

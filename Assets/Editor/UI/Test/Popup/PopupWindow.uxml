@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/UI/Test/CustomEditorTK.uss?fileID=7433441132597879392&amp;guid=afa977ff8eb66614d8cdb14178233347&amp;type=3#CustomEditorTK" />
+    <ui:VisualElement name="popupWindow" style="position: absolute; width: 300px; height: 100px; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px; border-top-left-radius: 5px; border-bottom-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); background-color: rgb(56, 56, 56);">
+        <ui:Label text="Create new file &lt;T&gt;" display-tooltip-when-elided="true" name="popupTitle" class="H3" />
+        <ui:TextField picking-mode="Ignore" label="Filename" name="popupTextfield" style="margin-bottom: 5px; margin-top: 5px; font-size: 14px;" />
+        <ui:Label text="New files will be created in asset folder." display-tooltip-when-elided="true" name="popupHint" class="P1" style="font-size: 9px;" />
+        <ui:Button text="Create" display-tooltip-when-elided="true" name="popupCreateButton" />
+        <ui:Button text="x" display-tooltip-when-elided="true" name="popupCloseButton" style="position: absolute; right: 5px;" />
+    </ui:VisualElement>
+</ui:UXML>

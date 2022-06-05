@@ -1,0 +1,102 @@
+.H0 {
+    font-size: 40px;
+    -unity-text-align: middle-center;
+}
+
+.H1 {
+    font-size: 32px;
+    -unity-text-align: middle-center;
+}
+
+.H2 {
+    font-size: 26px;
+    -unity-text-align: middle-center;
+}
+
+.H3 {
+    font-size: 22px;
+    -unity-text-align: middle-center;
+}
+
+.H4 {
+    font-size: 18px;
+    -unity-text-align: middle-center;
+}
+
+.P1 {
+    font-size: 12px;
+    -unity-text-align: middle-center;
+}
+
+#tabs {
+    flex-basis: auto;
+    flex-direction: row;
+    -unity-font-style: bold;
+    flex-shrink: 0;
+    flex-grow: 0;
+    background-color: rgb(38, 38, 38);
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.tab {
+    min-height: auto;
+    border-left-width: 2px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    -unity-text-align: middle-center;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    margin-right: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.currentlySelectedTab {
+    background-color: rgb(118, 118, 118);
+}
+
+#tabContent {
+    flex-basis: auto;
+    font-size: 20px;
+    flex-shrink: 1;
+    flex-grow: 1;
+    min-height: auto;
+}
+
+.unselectedContent {
+    display: none;
+}
+
+.hide {
+    visibility: hidden;
+    /*position: absolute;*/
+}
+
+TwoPaneSplitView {
+    overflow: visible;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+TwoPaneSplitView ListView {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+
+TwoPaneSplitView VisualElement Label {
+    overflow: hidden;
+}

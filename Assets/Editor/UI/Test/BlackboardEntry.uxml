@@ -1,0 +1,17 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/UI/Test/CustomEditorTK.uss?fileID=7433441132597879392&amp;guid=afa977ff8eb66614d8cdb14178233347&amp;type=3#CustomEditorTK" />
+    <ui:VisualElement style="flex-direction: row; justify-content: space-between; flex-grow: 0; flex-shrink: 1;">
+        <HideableElement MinimumWidth="90" style="width: 10%; flex-basis: 100px;">
+            <ui:Label text="keyName" display-tooltip-when-elided="true" name="fileName" style="-unity-text-align: middle-left; flex-shrink: 1; min-width: 0; flex-grow: 1;" />
+        </HideableElement>
+        <ui:TextField picking-mode="Ignore" name="idName" style="flex-grow: 1; min-width: 30%; flex-basis: 100px; flex-wrap: wrap;" />
+        <HideableElement MinimumWidth="130" style="width: 150px; min-width: 0; flex-shrink: 1;">
+            <ui:Label text="Id" display-tooltip-when-elided="true" name="id" style="flex-grow: 1; flex-shrink: 1;" />
+        </HideableElement>
+        <ui:DropdownField name="dropDown" index="-1" style="flex-grow: 0.2;" />
+        <HideableElement MinimumWidth="50" style="width: 10%;">
+            <uie:FloatField value="42.2" name="initialValue" style="overflow: hidden; flex-shrink: 1; flex-grow: 1;" />
+        </HideableElement>
+        <ui:Label text="0" display-tooltip-when-elided="true" focusable="false" name="currentValue" style="min-width: 50px; max-width: 10%; -unity-text-align: middle-right; margin-right: 5px; flex-basis: 100px;" />
+    </ui:VisualElement>
+</ui:UXML>

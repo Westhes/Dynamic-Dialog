@@ -8,6 +8,10 @@ namespace GameName.DynamicDialog.Blackboard.Entry
     [StructLayout(LayoutKind.Sequential)]
     public struct BlackboardValue : IBlackboardEntry
     {
+#if UNITY_EDITOR
+        public string Name => "RuntimeVariable";
+#endif
+
         public int Id { get; set; }
 
         public float Value { get; set; }

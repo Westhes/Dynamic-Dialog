@@ -1,0 +1,44 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Editor/UI/Test/CustomEditorTK.uss?fileID=7433441132597879392&amp;guid=afa977ff8eb66614d8cdb14178233347&amp;type=3#CustomEditorTK" />
+    <ui:VisualElement name="tabs" class="H4">
+        <ui:Label name="DialogTab" text="Dialog Settings" class="tab currentlySelectedTab" />
+        <ui:Label name="BlackboardTab" text="Blackboard" class="tab" />
+    </ui:VisualElement>
+    <ui:VisualElement name="tabContent">
+        <ui:VisualElement name="DialogContent" class="unselectedContent" style="flex-grow: 1; flex-direction: row;">
+            <ui:TwoPaneSplitView class="H3">
+                <ui:VisualElement>
+                    <ui:Label text="World" display-tooltip-when-elided="true" />
+                    <ui:ListView focusable="true" reorder-mode="Animated" reorderable="true" show-add-remove-footer="true" show-border="true" style="flex-grow: 1;" />
+                </ui:VisualElement>
+                <ui:TwoPaneSplitView>
+                    <ui:VisualElement>
+                        <ui:Label text="Character" display-tooltip-when-elided="true" />
+                        <ui:ListView focusable="true" reorder-mode="Animated" reorderable="true" show-add-remove-footer="true" show-border="true" style="flex-grow: 1;" />
+                    </ui:VisualElement>
+                    <ui:TwoPaneSplitView>
+                        <ui:VisualElement>
+                            <ui:Label text="Events" display-tooltip-when-elided="true" />
+                            <ui:ListView focusable="true" reorder-mode="Animated" reorderable="true" show-add-remove-footer="true" show-border="true" style="flex-grow: 1;" />
+                        </ui:VisualElement>
+                        <ui:VisualElement>
+                            <ui:Label text="Event conditions" display-tooltip-when-elided="true" />
+                            <ui:TextField text="teeeeeeeeeeeeeeeeeeeeest" multiline="true" style="white-space: normal;" />
+                        </ui:VisualElement>
+                    </ui:TwoPaneSplitView>
+                </ui:TwoPaneSplitView>
+            </ui:TwoPaneSplitView>
+        </ui:VisualElement>
+        <ui:VisualElement name="BlackboardContent" style="flex-grow: 1;">
+            <ui:VisualElement style="flex-direction: row;">
+                <ui:Label text="Filename" display-tooltip-when-elided="true" />
+                <ui:Label text="IdName" display-tooltip-when-elided="true" />
+                <ui:Label text="Id" display-tooltip-when-elided="true" />
+                <ui:Label text="Scope" display-tooltip-when-elided="true" />
+                <ui:Label text="Initial" display-tooltip-when-elided="true" />
+                <ui:Label text="Current" display-tooltip-when-elided="true" />
+            </ui:VisualElement>
+            <ui:ListView focusable="true" show-add-remove-footer="true" show-border="true" name="BlackboardKeys" style="flex-grow: 1;" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
