@@ -15,8 +15,7 @@ namespace GameName.UI
         private DialogUIBlackboard blackboard;
 
         // File paths
-        public static string CustomEditorTKFilePath { get; private set; }
-
+        public static string UxmlPath { get; private set; }
 
         [MenuItem("DynamicDialog/DynamicDialog Window")]
         public static void ShowExample()
@@ -27,11 +26,10 @@ namespace GameName.UI
 
         public void OnEnable()
         {
-            Debug.Log("OnEnable");
-            CustomEditorTKFilePath = UIToolkitUtil.FindRelativeUXMLPathQuick<DynamicDialogWindow>();
+            UxmlPath = UIToolkitUtil.FindRelativeUXMLPathQuick<DynamicDialogWindow>();
 
             // Load and create UI.
-            VisualTreeAsset original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(CustomEditorTKFilePath);
+            VisualTreeAsset original = AssetDatabase.LoadAssetAtPath<VisualTreeAsset>(UxmlPath);
             TemplateContainer treeAsset = original.CloneTree();
             treeAsset.style.flexGrow = 1;
             rootVisualElement.Add(treeAsset);
