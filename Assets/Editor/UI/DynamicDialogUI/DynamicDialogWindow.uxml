@@ -5,7 +5,7 @@
         <ui:Label name="BlackboardTab" text="Blackboard" class="tab" />
     </ui:VisualElement>
     <ui:VisualElement name="tabContent">
-        <ui:VisualElement name="DialogContent" class="unselectedContent" style="flex-grow: 1; flex-direction: row;">
+        <ui:VisualElement name="DialogContent" style="flex-grow: 1; flex-direction: row;">
             <ui:TwoPaneSplitView class="H3">
                 <ui:VisualElement>
                     <ui:Label text="World" display-tooltip-when-elided="true" />
@@ -23,20 +23,26 @@
                         </ui:VisualElement>
                         <ui:VisualElement>
                             <ui:Label text="Event conditions" display-tooltip-when-elided="true" />
-                            <ui:TextField text="teeeeeeeeeeeeeeeeeeeeest" multiline="true" style="white-space: normal;" />
+                            <ui:TextField text="Placeholder EventInfo" multiline="true" style="white-space: normal;" />
                         </ui:VisualElement>
                     </ui:TwoPaneSplitView>
                 </ui:TwoPaneSplitView>
             </ui:TwoPaneSplitView>
         </ui:VisualElement>
-        <ui:VisualElement name="BlackboardContent" style="flex-grow: 1;">
-            <ui:VisualElement style="flex-direction: row;">
-                <ui:Label text="Filename" display-tooltip-when-elided="true" />
-                <ui:Label text="IdName" display-tooltip-when-elided="true" />
-                <ui:Label text="Id" display-tooltip-when-elided="true" />
-                <ui:Label text="Scope" display-tooltip-when-elided="true" />
-                <ui:Label text="Initial" display-tooltip-when-elided="true" />
-                <ui:Label text="Current" display-tooltip-when-elided="true" />
+        <ui:VisualElement name="BlackboardContent" class="unselectedContent" style="flex-grow: 1;">
+            <ui:VisualElement style="flex-direction: row; border-left-width: 1px; border-right-width: 1px; border-top-width: 1px; border-bottom-width: 1px;">
+                <HideableElement MinimumWidth="90" style="flex-basis: 100px; width: 10%;">
+                    <ui:Label text="Filename" display-tooltip-when-elided="true" />
+                </HideableElement>
+                <ui:Label text="IdName" display-tooltip-when-elided="true" style="flex-basis: 100px; flex-grow: 1; flex-shrink: 0; margin-left: 3px; margin-right: 3px; margin-top: 1px; margin-bottom: 1px; padding-left: 0; padding-right: 0; min-width: 30%;" />
+                <HideableElement style="flex-shrink: 1; width: 150px; flex-grow: 1; padding-left: 1px; padding-right: 2px;">
+                    <ui:Label text="Id" display-tooltip-when-elided="true" />
+                </HideableElement>
+                <ui:Label text="Scope" display-tooltip-when-elided="true" style="flex-grow: 0.2; flex-shrink: 0; margin-bottom: 1px; margin-top: 1px; margin-left: 3px; margin-right: 3px;" />
+                <HideableElement style="width: 10%;">
+                    <ui:Label text="Initial" display-tooltip-when-elided="true" style="width: 10%;" />
+                </HideableElement>
+                <ui:Label text="Current" display-tooltip-when-elided="true" style="flex-basis: 100px; margin-right: 5px; max-width: 10%; min-width: 50px; flex-shrink: 0; flex-grow: 0;" />
             </ui:VisualElement>
             <ui:ListView focusable="true" show-add-remove-footer="true" show-border="true" name="BlackboardKeys" style="flex-grow: 1;" />
         </ui:VisualElement>
